@@ -2,10 +2,8 @@ module github.com/s-um/grpc-lb
 
 go 1.17
 
-replace github.com/s-um/grpc-lb/pkg/grpc => ../pkg/grpc
-
 require (
-	github.com/s-um/grpc-lb/pkg/grpc v0.0.0-00010101000000-000000000000
+	github.com/s-um/grpc-lb/pkg/grpc v0.0.0-20220314053124-966d929fda28
 	google.golang.org/grpc v1.45.0
 )
 

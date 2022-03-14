@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package pkg.grpc;
+
+option go_package = "github.com/s-um/grpc-lb/pkg/grpc";
+
+service User {
+  rpc HelloWorld(HelloWorldRequest) returns (HelloWorldResponse);
+}
+
+message HelloWorldRequest {}
+
+message HelloWorldResponse {
+  string name = 1;
+}

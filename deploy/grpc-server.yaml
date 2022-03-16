@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: grpc-server
+  name: grpc-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: grpc-server
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: grpc-server
+    spec:
+      containers:
+      - image: myoon/grpc-server:t0.0.1
+        name: grpc-server
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: grpc-server
+  name: grpc-server
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: grpc-server
+
+

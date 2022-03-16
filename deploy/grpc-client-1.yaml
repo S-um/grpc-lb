@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: grpc-client-1
+  name: grpc-client-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grpc-client-1
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: grpc-client-1
+    spec:
+      containers:
+      - image: myoon/grpc-client:t0.0.1
+        name: grpc-client-1
+        env:
+        - name: "ADDR"
+          value: "grpc-server:8080"
+        - name: "DURATION"
+          value: "1"
+
+---
+

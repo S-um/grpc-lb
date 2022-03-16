@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: http-client-2
+  name: http-client-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: http-client-2
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: http-client-2
+    spec:
+      containers:
+      - image: myoon/http-client:t0.0.1
+        name: http-client-2
+        env:
+          - name: "ADDR"
+            value: "http://http-server:8080"
+          - name: "DURATION"
+            value: "10"
+
+---
+

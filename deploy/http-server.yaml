@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: http-server
+  name: http-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: http-server
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: http-server
+    spec:
+      containers:
+      - image: myoon/http-server:t0.0.1
+        name: http-server
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: http-server
+  name: http-server
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: http-server
+
+
